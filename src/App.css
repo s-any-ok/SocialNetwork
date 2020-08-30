@@ -1,0 +1,64 @@
+.wrapper {
+  display: grid;
+
+  grid-template-areas:
+    "h h"
+    "n c"
+    "f f";
+  grid-template-columns: 1fr 8fr;
+  grid-template-rows: 1fr 11fr 1fr;
+}
+
+.header {
+  grid-area: h;
+  background-color: #333333;
+}
+
+.nav {
+  grid-area: n;
+  background-color: #333333;
+}
+
+.content {
+  grid-area: c;
+  background-color: rgb(243, 243, 243);
+}
+
+.footer {
+  grid-area: f;
+  background-color: #333333;
+  text-align: center;
+}
+
+.logo {
+  color: white;
+  margin: 2px 0px 0px 10px;
+  font-size: 1.5em;
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.content img {
+  height: 500px;
+}
+
+.menuBtns {
+  color: white;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.menuBtns a {
+  padding: 8px 8px 4px 10px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.footerInfo {
+  color: white;
+  font-size: 0.8em;
+  text-align: center;
+  padding: 12px 0px 0px 0px;
+}
