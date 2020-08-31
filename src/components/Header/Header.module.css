@@ -1,0 +1,12 @@
+.header {
+  grid-area: h;
+  background-color: #111111;
+}
+
+.logo {
+  color: white;
+  margin: 0px 0px 0px 18px;
+  font-size: 1.6em;
+  text-align: left;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
