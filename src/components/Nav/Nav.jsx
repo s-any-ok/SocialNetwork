@@ -5,8 +5,8 @@ const Nav = () => {
   return (
     <div className={s.nav}>
       <div className={s.menuBtns}>
-        <a>Profile</a>
-        <a>Messages</a>
+        <a href="/profile">Profile</a>
+        <a href="/dialogs">Messages</a>
         <a>News</a>
         <a>Music</a>
         <hr />
