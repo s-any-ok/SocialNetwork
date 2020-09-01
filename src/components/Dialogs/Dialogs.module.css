@@ -10,3 +10,7 @@
 .messages {
   padding: 10px;
 }
+
+.item img {
+  height: 50px;
+}

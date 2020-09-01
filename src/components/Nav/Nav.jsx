@@ -22,6 +22,33 @@ const Nav = () => {
         <NavLink to="/settings" activeClassName={s.active}>
           Settings
         </NavLink>
+        <br />
+        <br />
+        <div>
+          <div className={s.friendsHead}>
+            <h2>Friends</h2>
+          </div>
+          <div className={s.friends}>
+            <div className={s.friend}>
+              <div>
+                <img src="https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png" />
+              </div>
+              <h6>Max</h6>
+            </div>
+            <div className={s.friend}>
+              <div>
+                <img src="https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png" />
+              </div>
+              <h6>Max</h6>
+            </div>
+            <div className={s.friend}>
+              <div>
+                <img src="https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png" />
+              </div>
+              <h6>Max</h6>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
