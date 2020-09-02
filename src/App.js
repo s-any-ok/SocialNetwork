@@ -8,6 +8,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Dialogs from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
+
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -17,7 +18,12 @@ const App = (props) => {
         <div className="wrapper-content">
           <Route
             path="/profile"
-            render={() => <Profile state={props.state.profilePage} />}
+            render={() => (
+              <Profile
+                state={props.state.profilePage}
+                addUser={props.addUser}
+              />
+            )}
           />
           <Route
             path="/dialogs"

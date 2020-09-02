@@ -1,3 +1,4 @@
+import { rerender } from "./../render";
 let state = {
   profilePage: {
     posts: [
@@ -33,6 +34,12 @@ let state = {
       { id: 6, name: "Jaruk" },
     ],
   },
+};
+
+export const addUser = (newMessage) => {
+  const newPost = { id: 5, message: newMessage, likes: 10 };
+  state.profilePage.posts.push(newPost);
+  rerender(state);
 };
 
 export default state;
