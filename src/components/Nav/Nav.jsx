@@ -1,8 +1,9 @@
 import React from "react";
 import s from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
+import Friends from "./Friends/Friends";
 
-const Nav = () => {
+const Nav = (props) => {
   return (
     <div className={s.nav}>
       <div className={s.menuBtns}>
@@ -24,31 +25,7 @@ const Nav = () => {
         </NavLink>
         <br />
         <br />
-        <div>
-          <div className={s.friendsHead}>
-            <h2>Friends</h2>
-          </div>
-          <div className={s.friends}>
-            <div className={s.friend}>
-              <div>
-                <img src="https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png" />
-              </div>
-              <h6>Max</h6>
-            </div>
-            <div className={s.friend}>
-              <div>
-                <img src="https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png" />
-              </div>
-              <h6>Max</h6>
-            </div>
-            <div className={s.friend}>
-              <div>
-                <img src="https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png" />
-              </div>
-              <h6>Max</h6>
-            </div>
-          </div>
-        </div>
+        <Friends friends={props.state.friends} />
       </div>
     </div>
   );

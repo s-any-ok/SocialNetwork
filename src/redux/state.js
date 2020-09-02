@@ -23,6 +23,16 @@ let state = {
       { id: 4, message: "How are you?" },
     ],
   },
+  sidebar: {
+    friends: [
+      { id: 1, name: "Dima" },
+      { id: 2, name: "Roma" },
+      { id: 3, name: "Denus" },
+      { id: 4, name: "Taras" },
+      { id: 5, name: "Mark" },
+      { id: 6, name: "Jaruk" },
+    ],
+  },
 };
 
 export default state;
