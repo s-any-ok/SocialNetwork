@@ -7,6 +7,7 @@ let state = {
       { id: 3, message: "How are you boy?", likes: 0 },
       { id: 4, message: "I know Raect!", likes: 18 },
     ],
+    newPostText: "",
   },
 
   dialogsPage: {
@@ -36,9 +37,14 @@ let state = {
   },
 };
 
-export const addUser = (newMessage) => {
-  const newPost = { id: 5, message: newMessage, likes: 10 };
+export const addUser = () => {
+  const newPost = { id: 5, message: state.profilePage.newPostText, likes: 10 };
   state.profilePage.posts.push(newPost);
+  rerender(state);
+};
+
+export const onPostChange = (text) => {
+  state.profilePage.newPostText = text;
   rerender(state);
 };
 

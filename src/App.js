@@ -20,8 +20,9 @@ const App = (props) => {
             path="/profile"
             render={() => (
               <Profile
-                state={props.state.profilePage}
+                profilePage={props.state.profilePage}
                 addUser={props.addUser}
+                onPostChange={props.onPostChange}
               />
             )}
           />
