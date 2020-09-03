@@ -10,7 +10,6 @@ const MyPosts = (props) => {
   const postInfo = React.createRef();
 
   const addPost = () => {
-    const text = postInfo.current.value;
     props.addUser();
     props.onPostChange("");
   };

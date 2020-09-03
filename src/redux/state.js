@@ -1,4 +1,5 @@
-import { rerender } from "./../render";
+let rerender = () => null;
+
 let state = {
   profilePage: {
     posts: [
@@ -46,6 +47,10 @@ export const addUser = () => {
 export const onPostChange = (text) => {
   state.profilePage.newPostText = text;
   rerender(state);
+};
+
+export const subscriber = (obresver) => {
+  rerender = obresver;
 };
 
 export default state;
