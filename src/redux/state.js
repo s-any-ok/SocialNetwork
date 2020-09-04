@@ -1,56 +1,68 @@
-let rerender = () => null;
+let store = {
+  _state: {
+    profilePage: {
+      posts: [
+        { id: 1, message: "How are you boy?", likes: 10 },
+        { id: 2, message: "I know Raect!", likes: 8 },
+        { id: 3, message: "How are you boy?", likes: 0 },
+        { id: 4, message: "I know Raect!", likes: 18 },
+      ],
+      newPostText: "",
+    },
 
-let state = {
-  profilePage: {
-    posts: [
-      { id: 1, message: "How are you boy?", likes: 10 },
-      { id: 2, message: "I know Raect!", likes: 8 },
-      { id: 3, message: "How are you boy?", likes: 0 },
-      { id: 4, message: "I know Raect!", likes: 18 },
-    ],
-    newPostText: "",
+    dialogsPage: {
+      dialogs: [
+        { id: 1, name: "Dima" },
+        { id: 2, name: "Roma" },
+        { id: 3, name: "Denus" },
+        { id: 4, name: "Taras" },
+      ],
+
+      messages: [
+        { id: 1, message: "Hi" },
+        { id: 2, message: "What is your name?" },
+        { id: 3, message: "How are you?" },
+        { id: 4, message: "How are you?" },
+      ],
+    },
+    sidebar: {
+      friends: [
+        { id: 1, name: "Dima" },
+        { id: 2, name: "Roma" },
+        { id: 3, name: "Denus" },
+        { id: 4, name: "Taras" },
+        { id: 5, name: "Mark" },
+        { id: 6, name: "Jaruk" },
+      ],
+    },
   },
 
-  dialogsPage: {
-    dialogs: [
-      { id: 1, name: "Dima" },
-      { id: 2, name: "Roma" },
-      { id: 3, name: "Denus" },
-      { id: 4, name: "Taras" },
-    ],
-
-    messages: [
-      { id: 1, message: "Hi" },
-      { id: 2, message: "What is your name?" },
-      { id: 3, message: "How are you?" },
-      { id: 4, message: "How are you?" },
-    ],
+  _callSubscriber() {
+    return "";
   },
-  sidebar: {
-    friends: [
-      { id: 1, name: "Dima" },
-      { id: 2, name: "Roma" },
-      { id: 3, name: "Denus" },
-      { id: 4, name: "Taras" },
-      { id: 5, name: "Mark" },
-      { id: 6, name: "Jaruk" },
-    ],
+
+  getState() {
+    return this._state;
+  },
+
+  addUser() {
+    const newPost = {
+      id: 5,
+      message: this._state.profilePage.newPostText,
+      likes: 10,
+    };
+    this._state.profilePage.posts.push(newPost);
+    this._callSubscriber(this._state);
+  },
+
+  onPostChange(text) {
+    this._state.profilePage.newPostText = text;
+    this._callSubscriber(this._state);
+  },
+
+  subscriber(obresver) {
+    this._callSubscriber = obresver;
   },
 };
 
-export const addUser = () => {
-  const newPost = { id: 5, message: state.profilePage.newPostText, likes: 10 };
-  state.profilePage.posts.push(newPost);
-  rerender(state);
-};
-
-export const onPostChange = (text) => {
-  state.profilePage.newPostText = text;
-  rerender(state);
-};
-
-export const subscriber = (obresver) => {
-  rerender = obresver;
-};
-
-export default state;
+export default store;
