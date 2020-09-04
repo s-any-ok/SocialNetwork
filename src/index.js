@@ -8,11 +8,7 @@ import App from "./App";
 
 const rerender = (state) => {
   ReactDOM.render(
-    <App
-      state={state}
-      addUser={store.addUser.bind(store)}
-      onPostChange={store.onPostChange.bind(store)}
-    />,
+    <App state={state} dispatch={store.dispatch.bind(store)} />,
     document.getElementById("root")
   );
 };
