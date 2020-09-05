@@ -48,7 +48,7 @@ let store = {
   getState() {
     return this._state;
   },
-  subscriber(obresver) {
+  subscribe(obresver) {
     this._callSubscriber = obresver;
   },
 

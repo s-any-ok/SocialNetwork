@@ -1,20 +1,32 @@
 const ADD_POST = "ADD-POST";
 const ON_POST_CHANGE = "ON-POST-CHANGE";
 
-const profileReducer = (state, action) => {
-  if (action.type === ADD_POST) {
-    const newPost = {
-      id: 5,
-      message: state.newPostText,
-      likes: 10,
-    };
-    state.posts.push(newPost);
-    state.newPostText = "";
-  } else if (action.type === ON_POST_CHANGE) {
-    state.newPostText = action.newText;
+const initialState = {
+  posts: [
+    { id: 1, message: "How are you boy?", likes: 10 },
+    { id: 2, message: "I know Raect!", likes: 8 },
+    { id: 3, message: "How are you boy?", likes: 0 },
+    { id: 4, message: "I know Raect!", likes: 18 },
+  ],
+  newPostText: "",
+};
+const profileReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_POST:
+      const newPost = {
+        id: 5,
+        message: state.newPostText,
+        likes: 10,
+      };
+      state.posts.push(newPost);
+      state.newPostText = "";
+      return state;
+    case ON_POST_CHANGE:
+      state.newPostText = action.newText;
+      return state;
+    default:
+      return state;
   }
-
-  return state;
 };
 
 export const addPostActionCreator = () => ({
