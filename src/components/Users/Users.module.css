@@ -1,0 +1,18 @@
+.userPhoto {
+  width: 100px;
+  height: 100px;
+}
+
+.user {
+  float: left;
+  margin: 15px;
+  padding-left: 10px;
+}
+
+.userButton {
+  padding: 4px;
+}
+
+h3 {
+  padding: 8px;
+}
