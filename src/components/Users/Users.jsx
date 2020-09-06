@@ -1,37 +1,15 @@
 import React from "react";
 import s from "./Users.module.css";
+import * as axios from "axios";
+import userDefaultPhoto from "./../../assets/img/user.png";
 
 const Users = (props) => {
   if (props.users.length === 0) {
-    props.setUsers([
-      {
-        id: 1,
-        fullName: "Dima",
-        photoUrl:
-          "https://facilict.com.au/wp-content/uploads/2019/02/gent-300x300.png",
-        followed: true,
-        status: "I am boss",
-        location: { city: "Lutsk", country: "Ukraine" },
-      },
-      {
-        id: 2,
-        fullName: "Sasha",
-        photoUrl:
-          "https://facilict.com.au/wp-content/uploads/2019/02/gent-300x300.png",
-        followed: false,
-        status: "I am boss too",
-        location: { city: "Kiev", country: "Ukraine" },
-      },
-      {
-        id: 3,
-        fullName: "Max",
-        photoUrl:
-          "https://facilict.com.au/wp-content/uploads/2019/02/gent-300x300.png",
-        followed: true,
-        status: "I am not boss",
-        location: { city: "Minsk", country: "Belarus" },
-      },
-    ]);
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
   }
 
   return (
@@ -41,7 +19,10 @@ const Users = (props) => {
         <div key={u.id} className={s.user}>
           <div>
             <div>
-              <img src={u.photoUrl} className={s.userPhoto} />
+              <img
+                src={u.photos.small != null ? u.photos.small : userDefaultPhoto}
+                className={s.userPhoto}
+              />
             </div>
             <div className={s.userButton}>
               {u.followed ? (
@@ -64,11 +45,9 @@ const Users = (props) => {
             </div>
           </div>
           <div>
-            <div>{u.fullName}</div>
+            <div>{u.name}</div>
             <div>{u.status}</div>
-            <div>
-              {u.location.country}, {u.location.city}
-            </div>
+            <div>{"{u.location.country}, {u.location.city}"}</div>
           </div>
         </div>
       ))}
