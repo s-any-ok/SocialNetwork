@@ -5,8 +5,8 @@
 
 .user {
   float: left;
-  margin: 15px;
-  padding-left: 10px;
+  margin: 20px;
+  padding-left: 40px;
 }
 
 .userButton {
@@ -15,4 +15,27 @@
 
 h3 {
   padding: 8px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.users {
+  flex: 1 0 auto;
+}
+
+.pagesBtn {
+  flex: 0 0 auto;
+  margin: 1% auto;
+}
+
+span {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.actBtn {
+  font-weight: bold;
 }
