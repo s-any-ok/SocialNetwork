@@ -1,7 +1,27 @@
-img {
-  height: 500px;
+.wallImg {
+  height: 400px;
+  width: 100%;
 }
 
 .descriptionBlock {
-  padding: 10px;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  padding: 30px;
+}
+
+.fullName {
+  padding-top: 8px;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+  margin-left: 12%;
+}
+
+.aboutMe {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 0.8em;
+  margin-left: 12%;
+}
+
+.photo {
+  border-radius: 180px;
 }
