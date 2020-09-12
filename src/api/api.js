@@ -12,14 +12,12 @@ export const userAPI = {
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => response.data);
   },
-  getProfile(currentPage = 1, pageSize = 12) {
-    return instantion
-      .get(`users?page=${currentPage}&count=${pageSize}`)
-      .then((response) => response.data);
-  },
-  authUser(userId) {
+  getProfile(userId = 1) {
     return instantion
       .get(`profile/${userId}`)
       .then((response) => response.data);
+  },
+  authUser() {
+    return instantion.get(`auth/me`).then((response) => response.data);
   },
 };
