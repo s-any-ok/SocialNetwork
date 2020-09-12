@@ -6,10 +6,24 @@
   border-bottom: solid #535353a6 1.8px;
 }
 
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .logo {
   color: white;
   margin: 0px 0px 0px 18px;
   font-size: 1.6em;
   text-align: left;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.login {
+  color: white;
+  margin: 10px 15px 0px 0px;
+  font-size: 1em;
+  text-align: right;
+  cursor: pointer;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
