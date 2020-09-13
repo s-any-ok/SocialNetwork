@@ -26,7 +26,10 @@ const ProfileInfo = (props) => {
             }
           />
           <div className={s.fullName}>{props.profile.fullName}</div>
-          <ProfileStatus status={props.profile.aboutMe} />
+          <ProfileStatus
+            status={props.status}
+            updateUserStatus={props.updateUserStatus}
+          />
         </div>
         <div className={s.aboutUser}>
           <div>
@@ -49,6 +52,7 @@ const ProfileInfo = (props) => {
           </div>
           <div>
             <h4>Work status</h4>
+            <div>About me: {props.profile.aboutMe}</div>
             <div>
               Job hunting: {props.profile.lookingForAJob ? "Yes" : "No"}
             </div>
