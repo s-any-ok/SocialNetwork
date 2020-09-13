@@ -24,7 +24,7 @@ export const setUserData = (id, email, login) => ({
 });
 
 //-------------------Thunks--------------------//
-export const authUser = () => (dispath) => {
+export const getAuthUser = () => (dispath) => {
   authAPI.authUser().then((data) => {
     if (data.resultCode === 0) {
       let { id, login, email } = data.data;
