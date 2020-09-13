@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
+import userDefaultPhoto from "./../../../assets/img/user.png";
 
 const ProfileInfo = (props) => {
   debugger;
@@ -7,13 +8,22 @@ const ProfileInfo = (props) => {
     <div>
       <div>
         <img
+          alt="wallpaper"
           className={s.wallImg}
           src="https://d2dpa77enk4uif.cloudfront.net/app/uploads/20180506191205/silicon-valley-s5-intro-feature1.jpg"
         />
       </div>
       <div className={s.descriptionBlock}>
         <div className={s.photoAndName}>
-          <img className={s.photo} src={props.profile.photos.large} />
+          <img
+            alt="profile"
+            className={s.photo}
+            src={
+              props.profile.photos.large != null
+                ? props.profile.photos.large
+                : userDefaultPhoto
+            }
+          />
           <div className={s.fullName}>{props.profile.fullName}</div>
           <div className={s.aboutMe}>{props.profile.aboutMe}</div>
         </div>

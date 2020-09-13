@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = "ADD-POST";
 const ON_POST_CHANGE = "ON-POST-CHANGE";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -32,7 +34,7 @@ const profileReducer = (state = initialState, action) => {
       return state;
   }
 };
-
+//-------------------Actions--------------------//
 export const addPost = () => ({
   type: ADD_POST,
 });
@@ -44,5 +46,12 @@ export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
 });
+
+//-------------------Thunks--------------------//
+export const getProfile = (userId) => (dispath) => {
+  profileAPI.getProfile(userId).then((data) => {
+    dispath(setUserProfile(data));
+  });
+};
 
 export default profileReducer;

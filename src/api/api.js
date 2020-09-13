@@ -12,11 +12,23 @@ export const userAPI = {
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => response.data);
   },
+  follow(userId) {
+    return instantion.delete(`follow/${userId}`);
+  },
+  unfollow(userId) {
+    return instantion.post(`follow/${userId}`);
+  },
+};
+
+export const profileAPI = {
   getProfile(userId = 1) {
     return instantion
       .get(`profile/${userId}`)
       .then((response) => response.data);
   },
+};
+
+export const authAPI = {
   authUser() {
     return instantion.get(`auth/me`).then((response) => response.data);
   },
