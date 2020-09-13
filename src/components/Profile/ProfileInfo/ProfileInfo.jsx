@@ -1,17 +1,18 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import userDefaultPhoto from "./../../../assets/img/user.png";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   debugger;
   return (
     <div>
       <div>
-        <img
+        {/* <img
           alt="wallpaper"
           className={s.wallImg}
           src="https://d2dpa77enk4uif.cloudfront.net/app/uploads/20180506191205/silicon-valley-s5-intro-feature1.jpg"
-        />
+        /> */}
       </div>
       <div className={s.descriptionBlock}>
         <div className={s.photoAndName}>
@@ -25,7 +26,7 @@ const ProfileInfo = (props) => {
             }
           />
           <div className={s.fullName}>{props.profile.fullName}</div>
-          <div className={s.aboutMe}>{props.profile.aboutMe}</div>
+          <ProfileStatus status={props.profile.aboutMe} />
         </div>
         <div className={s.aboutUser}>
           <div>
