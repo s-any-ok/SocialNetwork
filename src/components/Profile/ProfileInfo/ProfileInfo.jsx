@@ -4,7 +4,6 @@ import userDefaultPhoto from "./../../../assets/img/user.png";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
-  debugger;
   return (
     <div>
       <div>
