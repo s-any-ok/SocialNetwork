@@ -38,4 +38,7 @@ export const authAPI = {
   authUser() {
     return instantion.get(`auth/me`).then((response) => response.data);
   },
+  loginUser() {
+    return instantion.post(`auth/login`).then((response) => response.data);
+  },
 };
