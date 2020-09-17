@@ -1,0 +1,12 @@
+.formControler.error textarea,
+.formControler.error input {
+  border: 2px red solid;
+}
+.formControler {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+.errText {
+  color: red;
+  margin: 0;
+}
