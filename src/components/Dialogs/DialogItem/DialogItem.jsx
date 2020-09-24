@@ -1,12 +1,13 @@
 import React from "react";
 import s from "./../Dialogs.module.css";
 import { NavLink } from "react-router-dom";
+import user from "../../../assets/img/user.png";
 
 const DialogItem = (props) => {
   const path = `/dialog/${props.id}`;
   return (
     <div className={s.item}>
-      <img src="https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png" />
+      <img alt="user" src={user} />
       <NavLink to={path}>{props.name}</NavLink>
     </div>
   );

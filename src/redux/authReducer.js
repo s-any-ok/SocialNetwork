@@ -11,16 +11,16 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA:
-      return { ...state, ...action.data, isAuth: true };
+      return { ...state, ...action.payload };
     default:
       return state;
   }
 };
 
 //-------------------Actions--------------------//
-export const setUserData = (id, email, login) => ({
+export const setUserData = (id, email, login, isAuth) => ({
   type: SET_USER_DATA,
-  data: { id, email, login },
+  payload: { id, email, login, isAuth },
 });
 
 //-------------------Thunks--------------------//
@@ -28,7 +28,23 @@ export const getAuthUser = () => (dispath) => {
   authAPI.authUser().then((data) => {
     if (data.resultCode === 0) {
       let { id, login, email } = data.data;
-      dispath(setUserData(id, email, login));
+      dispath(setUserData(id, email, login, true));
+    }
+  });
+};
+
+export const login = (email, password, rememberMe) => (dispath) => {
+  authAPI.login(email, password, rememberMe).then((data) => {
+    if (data.resultCode === 0) {
+      dispath(getAuthUser());
+    }
+  });
+};
+
+export const logout = () => (dispath) => {
+  authAPI.logout().then((data) => {
+    if (data.resultCode === 0) {
+      dispath(setUserData(null, null, null, false));
     }
   });
 };
