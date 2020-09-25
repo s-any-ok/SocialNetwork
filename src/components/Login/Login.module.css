@@ -1,0 +1,7 @@
+.commonError {
+  border: 1px red solid;
+  color: red;
+  width: 12%;
+  margin: 0.5%;
+  text-align: center;
+}
