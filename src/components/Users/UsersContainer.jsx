@@ -60,7 +60,6 @@ const mapDispatchToProps = {
   getUser,
 };
 
-export default compose(
-  withAuthRedirect,
-  connect(mapStateToProps, mapDispatchToProps)
-)(UsersContainer);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  UsersContainer
+);

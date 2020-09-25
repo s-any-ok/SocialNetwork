@@ -25,8 +25,8 @@ export const setUserData = (id, email, login, isAuth) => ({
 });
 
 //-------------------Thunks--------------------//
-export const getAuthUser = () => (dispath) => {
-  authAPI.authUser().then((data) => {
+export const getAuthUserData = () => (dispath) => {
+  return authAPI.authUser().then((data) => {
     if (data.resultCode === 0) {
       let { id, login, email } = data.data;
       dispath(setUserData(id, email, login, true));
@@ -37,7 +37,7 @@ export const getAuthUser = () => (dispath) => {
 export const login = (email, password, rememberMe) => (dispath) => {
   authAPI.login(email, password, rememberMe).then((data) => {
     if (data.resultCode === 0) {
-      dispath(getAuthUser());
+      dispath(getAuthUserData());
     } else {
       dispath(stopSubmit("login", { _error: "Common error" }));
     }
