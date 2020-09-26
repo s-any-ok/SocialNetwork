@@ -1,4 +1,4 @@
-import { userAPI } from "../api/api";
+import { userAPI } from "../../api/api";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -70,7 +70,7 @@ export const setUsers = (users) => ({
   type: SET_USERS,
   users,
 });
-export const changePage = (pageNumber) => ({
+export const setCurrentPage = (pageNumber) => ({
   type: CHANGE_CURRENT_PAGE,
   pageNumber,
 });
@@ -78,42 +78,43 @@ export const setUsersCount = (totalCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   totalCount,
 });
-export const setIsFetching = (isFetching) => ({
+export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 });
-export const toggleFollowing = (isFetching, userId) => ({
+export const toggleFollowingProgress = (isFetching, userId) => ({
   type: TOGGLE_FOLLOWING_IN_PROGRESS,
   isFetching,
   userId,
 });
 
 //-------------------Thunks--------------------//
-export const getUser = (currentPage, pageSize) => (dispath) => {
-  dispath(setIsFetching(true));
-  userAPI.getUser(currentPage, pageSize).then((data) => {
-    dispath(setIsFetching(false));
+export const requestUser = (page, pageSize) => (dispath) => {
+  dispath(toggleIsFetching(true));
+  dispath(setCurrentPage(page));
+  userAPI.getUser(page, pageSize).then((data) => {
+    dispath(toggleIsFetching(false));
     dispath(setUsers(data.items));
     dispath(setUsersCount(data.totalCount));
   });
 };
 export const follow = (userId) => (dispath) => {
-  dispath(toggleFollowing(true, userId));
+  dispath(toggleFollowingProgress(true, userId));
   userAPI.follow(userId).then((response) => {
     if (response.data.resultCode === 0) {
       dispath(unfollowSuccess(userId));
     }
-    dispath(toggleFollowing(false, userId));
+    dispath(toggleFollowingProgress(false, userId));
   });
 };
 
 export const unfollow = (userId) => (dispath) => {
-  dispath(toggleFollowing(true, userId));
+  dispath(toggleFollowingProgress(true, userId));
   userAPI.unfollow(userId).then((response) => {
     if (response.data.resultCode === 0) {
       dispath(followSuccess(userId));
     }
-    dispath(toggleFollowing(false, userId));
+    dispath(toggleFollowingProgress(false, userId));
   });
 };
 

@@ -12,7 +12,7 @@ import { Route, withRouter } from "react-router-dom";
 import Login from "./components/Login/Login";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { initializeApp } from "./redux/appReducer";
+import { initializeApp } from "./redux/reducers/appReducer";
 import Preloader from "./components/common/Preloader";
 
 class App extends React.Component {
