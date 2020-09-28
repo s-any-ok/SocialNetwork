@@ -2,6 +2,7 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 import userDefaultPhoto from "./../../../assets/img/user.png";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
   return (
@@ -25,7 +26,7 @@ const ProfileInfo = (props) => {
             }
           />
           <div className={s.fullName}>{props.profile.fullName}</div>
-          <ProfileStatus
+          <ProfileStatusWithHooks
             status={props.status}
             updateUserStatus={props.updateUserStatus}
           />
