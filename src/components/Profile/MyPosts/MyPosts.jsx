@@ -6,7 +6,8 @@ import { maxLengthConstructor, required } from "../../../validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
 const maxLength10 = maxLengthConstructor(10);
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
+  console.log("Render");
   const postsElements = props.profilePage.posts.map((p) => (
     <Post id={p.id} message={p.message} likes={p.likes} />
   ));
@@ -22,7 +23,7 @@ const MyPosts = (props) => {
       <div className={s.posts}>{postsElements}</div>
     </div>
   );
-};
+});
 
 const MyPostsForm = (props) => {
   return (
