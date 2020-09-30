@@ -1,19 +1,21 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import { Field, reduxForm } from "redux-form";
-import { maxLengthConstructor, required } from "../../../validators/validators";
-import { Textarea } from "../../common/FormsControls/FormsControls";
+import { reduxForm } from "redux-form";
+import {
+  maxLengthConstructor,
+  required,
+} from "../../../utils/validators/validators";
+import { createForm, Textarea } from "../../common/FormsControls/FormsControls";
 
 const maxLength10 = maxLengthConstructor(10);
-const MyPosts = React.memo((props) => {
-  console.log("Render");
-  const postsElements = props.profilePage.posts.map((p) => (
+const MyPosts = React.memo(({ profilePage, addPost }) => {
+  const postsElements = profilePage.posts.map((p) => (
     <Post id={p.id} message={p.message} likes={p.likes} />
   ));
 
   const addNewPost = (data) => {
-    props.addPost(data.postText);
+    addPost(data.postText);
   };
 
   return (
@@ -25,17 +27,14 @@ const MyPosts = React.memo((props) => {
   );
 });
 
-const MyPostsForm = (props) => {
+const MyPostsForm = ({ handleSubmit }) => {
   return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-        <Field
-          placeholder="Enter your message"
-          name="postText"
-          component={Textarea}
-          validate={[required, maxLength10]}
-        />
-      </div>
+    <form onSubmit={handleSubmit}>
+      {createForm("Enter your message", "postText", Textarea, [
+        required,
+        maxLength10,
+      ])}
+
       <div>
         <button>Add post</button>
       </div>

@@ -8,7 +8,7 @@ import {
   setUsersCount,
   requestUser,
 } from "../../redux/reducers/usersReducer";
-import Preloader from "../common/Preloader";
+import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
 import {
   getUser,
@@ -21,11 +21,13 @@ import {
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.requestUser(this.props.currentPage, this.props.pageSize);
+    const { currentPage, pageSize } = this.props;
+    this.props.requestUser(currentPage, pageSize);
   }
 
   onChangePage = (pageNam) => {
-    this.props.requestUser(pageNam, this.props.pageSize);
+    const { pageSize } = this.props;
+    this.props.requestUser(pageNam, pageSize);
   };
 
   render() {

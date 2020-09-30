@@ -1,0 +1,12 @@
+.pagesBtn {
+  flex: 0 0 auto;
+  margin: 1% auto;
+}
+
+.actBtn {
+  font-weight: bold;
+}
+span {
+  padding: 5px;
+  cursor: pointer;
+}

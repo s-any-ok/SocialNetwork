@@ -1,13 +1,14 @@
 .userPhoto {
-  width: 120px;
-  height: 120px;
+  width: 95%;
+  height: 95%;
   border-radius: 90px;
 }
 
 .user {
   float: left;
-  margin: 20px;
-  padding-left: 40px;
+  width: 20%;
+  height: 25%;
+  padding: 5%;
 }
 
 .userButton {
@@ -25,18 +26,4 @@ h3 {
 }
 .users {
   flex: 1 0 auto;
-}
-
-.pagesBtn {
-  flex: 0 0 auto;
-  margin: 1% auto;
-}
-
-span {
-  padding: 5px;
-  cursor: pointer;
-}
-
-.actBtn {
-  font-weight: bold;
 }

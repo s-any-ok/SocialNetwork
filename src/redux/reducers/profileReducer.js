@@ -1,8 +1,8 @@
 import { profileAPI } from "../../api/api";
 
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_USER_STATUS = "SET_USER_STATUS";
+const ADD_POST = "profile/ADD-POST";
+const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
+const SET_USER_STATUS = "profile/SET_USER_STATUS";
 
 const initialState = {
   posts: [
@@ -52,22 +52,19 @@ export const setUserStatus = (status) => ({
 });
 
 //-------------------Thunks--------------------//
-export const getProfile = (userId) => (dispath) => {
-  profileAPI.getProfile(userId).then((data) => {
-    dispath(setUserProfile(data));
-  });
+export const getProfile = (userId) => async (dispath) => {
+  const data = await profileAPI.getProfile(userId);
+  dispath(setUserProfile(data));
 };
-export const getUserStatus = (userId) => (dispath) => {
-  profileAPI.getStatus(userId).then((response) => {
-    dispath(setUserStatus(response.data));
-  });
+export const getUserStatus = (userId) => async (dispath) => {
+  const response = await profileAPI.getStatus(userId);
+  dispath(setUserStatus(response.data));
 };
-export const updateUserStatus = (status) => (dispath) => {
-  profileAPI.updateStatus(status).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispath(setUserStatus(status));
-    }
-  });
+export const updateUserStatus = (status) => async (dispath) => {
+  const response = await profileAPI.updateStatus(status);
+  if (response.data.resultCode === 0) {
+    dispath(setUserStatus(status));
+  }
 };
 
 export default profileReducer;

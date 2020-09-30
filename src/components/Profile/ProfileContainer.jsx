@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import Provider from "../common/Preloader";
+import Preloader from "../common/Preloader/Preloader";
 import {
   getProfile,
   getUserStatus,
@@ -23,7 +23,7 @@ class ProfileContainer extends React.Component {
   }
   render() {
     if (!this.props.profile) {
-      return <Provider />;
+      return <Preloader />;
     }
 
     return (
