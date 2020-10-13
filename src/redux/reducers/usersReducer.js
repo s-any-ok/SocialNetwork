@@ -5,7 +5,7 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE";
-const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const SET_TOTAL_ITEMS_COUNT = "SET-TOTAL-ITEMS-COUNT";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const TOGGLE_FOLLOWING_IN_PROGRESS = "TOGGLE_FOLLOWING_IN_PROGRESS";
 
@@ -13,7 +13,7 @@ const initialState = {
   users: [],
   currentPage: 1,
   pageSize: 12,
-  usersCount: 0,
+  totalItemsCount: 0,
   isFetching: false,
   isFollowingInProgress: [],
 };
@@ -37,8 +37,8 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, users: [...action.users] };
     case CHANGE_CURRENT_PAGE:
       return { ...state, currentPage: action.pageNumber };
-    case SET_TOTAL_USERS_COUNT:
-      return { ...state, usersCount: action.totalCount };
+    case SET_TOTAL_ITEMS_COUNT:
+      return { ...state, totalItemsCount: action.totalCount };
     case TOGGLE_IS_FETCHING:
       return { ...state, isFetching: action.isFetching };
     case TOGGLE_FOLLOWING_IN_PROGRESS:
@@ -69,8 +69,8 @@ export const setCurrentPage = (pageNumber) => ({
   type: CHANGE_CURRENT_PAGE,
   pageNumber,
 });
-export const setUsersCount = (totalCount) => ({
-  type: SET_TOTAL_USERS_COUNT,
+export const setItemsCount = (totalCount) => ({
+  type: SET_TOTAL_ITEMS_COUNT,
   totalCount,
 });
 export const toggleIsFetching = (isFetching) => ({
@@ -90,7 +90,7 @@ export const requestUser = (page, pageSize) => async (dispath) => {
 
   dispath(toggleIsFetching(false));
   dispath(setUsers(data.items));
-  dispath(setUsersCount(data.totalCount));
+  dispath(setItemsCount(data.totalCount));
 };
 export const follow = (userId) => async (dispath) => {
   followUnfollowFlow(
