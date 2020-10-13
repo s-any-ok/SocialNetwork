@@ -55,14 +55,14 @@ const Paginator = ({
       {portionCount > portionNumber && (
         <>
           <span
-            key={pages[pages.length - 1]}
+            key={endPage}
             onClick={() => {
-              onChangePage(pages[pages.length - 1]);
+              onChangePage(endPage);
               setPortionNumber(portionCount);
             }}
-            className={currentPage === pages[pages.length - 1] && s.actBtn}
+            className={currentPage === endPage && s.actBtn}
           >
-            ... {pages[pages.length - 1]}
+            ... {endPage}
           </span>
           <button onClick={() => setPortionNumber(portionNumber + 1)}>
             NEXT
