@@ -1,7 +1,7 @@
 import usersReducer, {
   followSuccess,
   setUsers,
-} from "../reducers/usersReducer";
+} from "../../redux/reducers/usersReducer";
 
 const state = {
   users: [{ id: 1, name: "Alex", followed: false }],
