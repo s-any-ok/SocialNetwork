@@ -6,6 +6,7 @@ import {
   getProfile,
   getUserStatus,
   savePhoto,
+  saveProfile,
   updateUserStatus,
 } from "../../redux/reducers/profileReducer";
 import { withRouter } from "react-router-dom";
@@ -38,6 +39,7 @@ class ProfileContainer extends React.Component {
     return (
       <Profile
         {...this.props}
+        saveProfile={this.props.saveProfile}
         savePhoto={this.props.savePhoto}
         isOwner={!this.props.match.params.userId}
         profile={this.props.profile}
@@ -62,6 +64,7 @@ let mapDispatchToProps = {
   getUserStatus,
   updateUserStatus,
   savePhoto,
+  saveProfile,
 };
 
 export default compose(

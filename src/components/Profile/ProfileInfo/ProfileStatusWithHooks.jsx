@@ -26,7 +26,10 @@ const ProfileStatusWithHooks = ({ propStatus, updateUserStatus }) => {
     <div>
       {!editMode && (
         <div onClick={activateEditMode} className={s.aboutMe}>
-          <span>{status || "------"}</span>
+          <span>
+            <b>Status: </b>
+            {status || "------"}
+          </span>
         </div>
       )}
       {editMode && (
