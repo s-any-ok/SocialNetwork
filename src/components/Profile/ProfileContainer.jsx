@@ -5,6 +5,7 @@ import Preloader from "../common/Preloader/Preloader";
 import {
   getProfile,
   getUserStatus,
+  savePhoto,
   updateUserStatus,
 } from "../../redux/reducers/profileReducer";
 import { withRouter } from "react-router-dom";
@@ -37,6 +38,7 @@ class ProfileContainer extends React.Component {
     return (
       <Profile
         {...this.props}
+        savePhoto={this.props.savePhoto}
         isOwner={!this.props.match.params.userId}
         profile={this.props.profile}
         status={this.props.status}
@@ -55,7 +57,12 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = { getProfile, getUserStatus, updateUserStatus };
+let mapDispatchToProps = {
+  getProfile,
+  getUserStatus,
+  updateUserStatus,
+  savePhoto,
+};
 
 export default compose(
   withAuthRedirect,

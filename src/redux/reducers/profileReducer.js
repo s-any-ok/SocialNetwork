@@ -1,8 +1,9 @@
 import { profileAPI } from "../../api/api";
 
-const ADD_POST = "profile/ADD-POST";
+const ADD_POST = "profile/ADD_POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
 const SET_USER_STATUS = "profile/SET_USER_STATUS";
+const SAVE_USER_PHOTO = "profile/SAVE_USER_PHOTO";
 
 const initialState = {
   posts: [
@@ -28,6 +29,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         profile: action.profile,
       };
+    case SAVE_USER_PHOTO:
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.photoFile },
+      };
     case SET_USER_STATUS:
       return {
         ...state,
@@ -50,6 +56,10 @@ export const setUserStatus = (status) => ({
   type: SET_USER_STATUS,
   status,
 });
+export const saveUserPhoto = (photoFile) => ({
+  type: SAVE_USER_PHOTO,
+  photoFile,
+});
 
 //-------------------Thunks--------------------//
 export const getProfile = (userId) => async (dispath) => {
@@ -59,6 +69,10 @@ export const getProfile = (userId) => async (dispath) => {
 export const getUserStatus = (userId) => async (dispath) => {
   const response = await profileAPI.getStatus(userId);
   dispath(setUserStatus(response.data));
+};
+export const savePhoto = (photoFile) => async (dispath) => {
+  const response = await profileAPI.savePhoto(photoFile);
+  dispath(saveUserPhoto(response.data.data.photos));
 };
 export const updateUserStatus = (status) => async (dispath) => {
   const response = await profileAPI.updateStatus(status);

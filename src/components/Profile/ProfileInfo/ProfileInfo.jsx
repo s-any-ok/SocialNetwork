@@ -3,9 +3,16 @@ import s from "./ProfileInfo.module.css";
 import userDefaultPhoto from "./../../../assets/img/user.png";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = ({ profile, status, updateUserStatus, isOwner }) => {
-  const changePhoto = (e) => {
-    if (e.target.files.lenght) {
+const ProfileInfo = ({
+  profile,
+  status,
+  updateUserStatus,
+  isOwner,
+  savePhoto,
+}) => {
+  const changePhoto = ({ target }) => {
+    if (target.files.length) {
+      savePhoto(target.files[0]);
     }
   };
   return (
@@ -22,8 +29,16 @@ const ProfileInfo = ({ profile, status, updateUserStatus, isOwner }) => {
             }
           />
           {isOwner && (
-            <div className={s.cngPhotoBtn}>
-              <input type={"file"} onChange={changePhoto} />
+            <div>
+              <label className={s.photoLable} for="fileElem">
+                Update photo
+              </label>
+              <input
+                id="fileElem"
+                className={s.customInputFile}
+                type={"file"}
+                onChange={changePhoto}
+              />
             </div>
           )}
           <div className={s.fullName}>{profile.fullName}</div>
