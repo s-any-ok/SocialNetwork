@@ -3,6 +3,11 @@ import { NavLink } from "react-router-dom";
 import s from "./Header.module.css";
 
 const Header = (props) => {
+  const onLogout = () => {
+    props.logout().then(() => {
+      window.location.reload();
+    });
+  };
   return (
     <div className={s.header}>
       <div className={s.container}>
@@ -12,7 +17,7 @@ const Header = (props) => {
 
         {props.isAuth ? (
           <div className={s.login}>
-            {props.login} <button onClick={props.logout}>Logout</button>
+            {props.login} <button onClick={onLogout}>Logout</button>
           </div>
         ) : (
           <NavLink to="/login">

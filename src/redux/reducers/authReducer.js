@@ -63,6 +63,7 @@ export const logout = () => async (dispath) => {
   if (data.resultCode === 0) {
     dispath(setUserData(null, null, null, false));
   }
+  return data;
 };
 
 export default authReducer;

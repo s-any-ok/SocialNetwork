@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Redirect, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/redux-store";
 import HeaderContainer from "./components/Header/HeaderContainer.jsx";
@@ -32,21 +32,26 @@ class MainApp extends React.Component {
     if (!this.props.initialized) {
       return <Preloader />;
     }
+
     return (
       <div className="wrapper">
         <HeaderContainer />
         <NavContainer />
         <div className="wrapper-content">
-          <Route
-            path="/profile/:userId?"
-            render={withSuspense(ProfileContainer)}
-          />
-          <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-          <Route path="/users" render={withSuspense(UsersContainer)} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/settings" render={() => <Settings />} />
-          <Route path="/login" render={withSuspense(Login)} />
+          <Switch>
+            <Redirect exact from="/" to="/profile" />
+            <Route
+              path="/profile/:userId?"
+              render={withSuspense(ProfileContainer)}
+            />
+            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+            <Route path="/users" render={withSuspense(UsersContainer)} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/settings" render={() => <Settings />} />
+            <Route path="/login" render={withSuspense(Login)} />
+            <Route path="*" render={() => <div>404 ERROR</div>} />
+          </Switch>
         </div>
       </div>
     );
