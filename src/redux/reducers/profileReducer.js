@@ -83,7 +83,6 @@ export const saveProfile = (profile) => async (dispath, getState) => {
   if (response.data.resultCode === 0) {
     dispath(getProfile(userId));
   } else {
-    debugger;
     dispath(stopSubmit("edit-profile", { _error: response.data.messages[0] }));
     return Promise.reject(response.data.messages[0]);
   }

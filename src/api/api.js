@@ -48,12 +48,20 @@ export const authAPI = {
   authUser() {
     return instantion.get(`auth/me`).then((response) => response.data);
   },
-  login(email, password, rememberMe = false) {
+  login(email, password, rememberMe = false, captcha = null) {
     return instantion
-      .post(`auth/login`, { email, password, rememberMe })
+      .post(`auth/login`, { email, password, rememberMe, captcha })
       .then((response) => response.data);
   },
   logout() {
     return instantion.delete(`auth/login`).then((response) => response.data);
+  },
+};
+
+export const securityAPI = {
+  getCapthUrl() {
+    return instantion
+      .get(`security/get-captcha-url`)
+      .then((response) => response.data);
   },
 };
