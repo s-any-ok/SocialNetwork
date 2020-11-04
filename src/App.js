@@ -5,9 +5,6 @@ import { Provider } from "react-redux";
 import store from "./redux/redux-store";
 import HeaderContainer from "./components/Header/HeaderContainer.jsx";
 import NavContainer from "./components/Nav/NavContainer.jsx";
-import News from "./components/News/News";
-import Music from "./components/Music/Music";
-import Settings from "./components/Settings/Settings";
 import { Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -46,9 +43,6 @@ class MainApp extends React.Component {
             />
             <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
             <Route path="/users" render={withSuspense(UsersContainer)} />
-            <Route path="/news" render={() => <News />} />
-            <Route path="/music" render={() => <Music />} />
-            <Route path="/settings" render={() => <Settings />} />
             <Route path="/login" render={withSuspense(Login)} />
             <Route path="*" render={() => <div>404 ERROR</div>} />
           </Switch>
